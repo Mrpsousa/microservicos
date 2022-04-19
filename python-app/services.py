@@ -2,9 +2,12 @@
 from time import sleep
 from json import dumps
 from kafka import KafkaProducer, KafkaConsumer
+from classes import Quotes
 
 bootstrap_servers = ['localhost:9091', 'localhost:9092']
 topicName = 'my-topic-three'
+
+quotes: Quotes = Quotes()
 
 
 def run_producer():
@@ -13,7 +16,7 @@ def run_producer():
         producer = KafkaProducer()
 
         for e in range(1000):
-            data = f"value : {e}"    
+            data = quotes.run()    
             producer.send(topicName, value=dumps(data).encode('ascii'))
             producer.flush()
             print(f"send data number: {e+1}")
@@ -35,3 +38,11 @@ def run_consumer():
         raise
     for message in consumer:
         print(message.value)
+
+
+def run_quotes():
+    for i in range(1000):
+        quotes.run()
+        print(f"send quote number: {i+1}")
+        sleep(5)
+

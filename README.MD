@@ -12,7 +12,7 @@
 
  ## project
    - docker exec -it kafka_kafka1_1 kafka-topics --zookeeper zookeeper:2181 --create --topic my-topic --partitions 1 --replication-factor 1
-   - docker exec -it kafka_kafka1_1 kafka-topics --zookeeper zookeeper:2181 --create --topic my-topic-three --partitions 1 --replication-factor 2
+   - Using - docker exec -it kafka_kafka1_1 kafka-topics --zookeeper zookeeper:2181 --create --topic my-topic-three --partitions 1 --replication-factor 2
    - kafka-console-consumer --bootstrap-server=kafka2:19092 --topic=my-topic-three --from-beginning
    - kafdrop : localhost:9000
 
