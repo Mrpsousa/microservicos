@@ -2,7 +2,7 @@ from utilities import error_handler
 import requests
 from decouple import config
 from json import loads
-
+from uuid import uuid4
 
 class Quotes():
 
@@ -25,11 +25,11 @@ class Quotes():
             for quotes in self.all_quotes:
                 date_ = quotes['date']
                 quotes = quotes['rates']
-                values = {'Uuid': 'valor fixo',
-                          'euro': quotes['EUR'],
+                values = {'Uuid': str(uuid4()),
+                          'eur': quotes['EUR'],
                           'brl': quotes['BRL'],
                           'jpy': quotes['JPY'],
-                          'of_date': date_}
+                          'date': date_}
 
                 self.quotes_list = values
         except Exception as e:
