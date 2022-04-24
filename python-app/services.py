@@ -41,8 +41,8 @@ def run_consumer():
 
 
 def run_quotes():
-    for i in range(1000):
-        quotes.run()
-        print(f"send quote number: {i+1}")
-        sleep(5)
-
+    try:
+        return quotes.run()
+    except Exception as e:
+        print(e)
+        raise
